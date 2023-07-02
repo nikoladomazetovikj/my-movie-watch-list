@@ -61,11 +61,35 @@ function ListItems({ movies }) {
                 </a>
             ))}
 
-            <Modal show={showModal} onHide={handleClose}>
+            <Modal show={showModal} onHide={handleClose} size="lg"
+                   aria-labelledby="contained-modal-title-vcenter"
+                   centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>{movie.Title}</Modal.Title>
+                    <Modal.Title>
+                        {movie.Title}
+                    </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>{movie.Plot}</Modal.Body>
+                <Modal.Body>
+                    <div className='row'>
+                        <div className='col-6'>
+                            <h6>Genre: {movie.Genre}</h6>
+                            <h6>Released: {movie.Released}</h6>
+                            <h6>Country: {movie.Country}</h6>
+                            <h6>Language: {movie.Language}</h6>
+                        </div>
+                        <div className='col-6'>
+                            <h6>Director: {movie.Director}</h6>
+                            <h6>Writer: {movie.Writer}</h6>
+                        </div>
+                    </div>
+                    <hr/>
+                    {movie.Plot}
+                    <hr/>
+                    <h6>Actors: {movie.Actors}</h6>
+                    <hr/>
+                    <h6>Awards: {movie.Awards}</h6>
+
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
