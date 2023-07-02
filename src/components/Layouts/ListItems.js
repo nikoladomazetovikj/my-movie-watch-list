@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import { Button, Modal } from "react-bootstrap";
+import Row from "./Row";
+import Column from "./Column";
 
 function ListItems({ movies }) {
     const [showModal, setShowModal] = useState(false);
@@ -33,7 +35,14 @@ function ListItems({ movies }) {
 
     return (
         <>
-            <h3>Search Movies</h3>
+           <Row>
+               <Column colType='6'>
+                   <h3>Search Movies</h3>
+               </Column>
+               <Column colType='6'>
+                   <h3 className='text-end'>Found: {movies.length}</h3>
+               </Column>
+           </Row>
             {movies.map((movie) => (
                 <a
                     key={movie.imdbID}
@@ -43,21 +52,22 @@ function ListItems({ movies }) {
                     type="button"
                     onClick={() => toggleModal(movie.imdbID)}
                 >
-                    <div className="row ">
-                        <div className="col-3">
+                    <Row>
+                        <Column colType='3'>
                             <img
                                 src={movie.Poster}
                                 alt={movie.Title}
                                 width="100"
                                 height="150"
                             />
-                        </div>
-                        <div className="col-9 ">
+                        </Column>
+                        <Column colType='9'>
                             <h5 className="mb-1">{movie.Title}</h5>
                             <p>Year: {movie.Year}</p>
                             <p>Type: {movie.Type}</p>
-                        </div>
-                    </div>
+                        </Column>
+                    </Row>
+
                 </a>
             ))}
 
@@ -70,25 +80,26 @@ function ListItems({ movies }) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className='row'>
-                        <div className='col-6'>
+                    <Row>
+                        <Column colType='6'>
                             <h6>Genre: {movie.Genre}</h6>
                             <h6>Released: {movie.Released}</h6>
                             <h6>Country: {movie.Country}</h6>
                             <h6>Language: {movie.Language}</h6>
-                        </div>
-                        <div className='col-6'>
+                        </Column>
+                        <Column colType='6'>
                             <h6>Director: {movie.Director}</h6>
                             <h6>Writer: {movie.Writer}</h6>
-                        </div>
-                    </div>
+                            <h6>Duration: {movie.Runtime}</h6>
+                            <h6>Rating: {movie.imdbRating}</h6>
+                        </Column>
+                    </Row>
                     <hr/>
                     {movie.Plot}
                     <hr/>
                     <h6>Actors: {movie.Actors}</h6>
                     <hr/>
                     <h6>Awards: {movie.Awards}</h6>
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
