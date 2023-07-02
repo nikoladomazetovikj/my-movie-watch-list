@@ -1,8 +1,6 @@
-//TODO: add style props
-
-function ContainerFluid({children}) {
+function ContainerFluid({children, style = 'm-5'}) {
     return (
-        <div className='container-fluid'>
+        <div className={`container-fluid ${style}`}>
             {children}
         </div>
     );
