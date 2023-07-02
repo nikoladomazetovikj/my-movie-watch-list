@@ -10,9 +10,9 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://www.omdbapi.com/?t=interstellar&apikey=${process.env.REACT_APP_API_KEY}`);
+                const response = await fetch(`http://www.omdbapi.com/?s=interstellar&apikey=${process.env.REACT_APP_API_KEY}`);
                 const data = await response.json();
-                setMovies(data);
+                setMovies(data.Search);
             } catch (error) {
                 console.error('Error fetching movies:', error);
             }
