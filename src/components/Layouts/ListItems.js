@@ -1,28 +1,31 @@
-import {useEffect, useState} from "react";
-import { Button, Modal } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Modal, Spinner } from "react-bootstrap";
 import Row from "./Row";
 import Column from "./Column";
 
 function ListItems({ movies }) {
     const [showModal, setShowModal] = useState(false);
     const [modalTarget, setModalTarget] = useState("");
-
-    const [movie, setMovie] = useState([]);
+    const [movie, setMovie] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true);
             try {
-                const response = await fetch(`http://www.omdbapi.com/?i=${modalTarget}&apikey=${process.env.REACT_APP_API_KEY}`);
+                const response = await fetch(
+                    `http://www.omdbapi.com/?i=${modalTarget}&apikey=${process.env.REACT_APP_API_KEY}`
+                );
                 const data = await response.json();
                 setMovie(data);
             } catch (error) {
-                console.error('Error fetching movies:', error);
+                console.error("Error fetching movies:", error);
             }
+            setIsLoading(false);
         };
 
         fetchData();
     }, [modalTarget]);
-
 
     const toggleModal = (target) => {
         setShowModal(!showModal);
@@ -34,14 +37,14 @@ function ListItems({ movies }) {
 
     return (
         <>
-           <Row>
-               <Column colType='6'>
-                   <h6>Results</h6>
-               </Column>
-               <Column colType='6'>
-                   <h6 className='text-end'>Found: {movies.length}</h6>
-               </Column>
-           </Row>
+            <Row>
+                <Column colType="6">
+                    <h6>Results</h6>
+                </Column>
+                <Column colType="6">
+                    <h6 className="text-end">Found: {movies.length}</h6>
+                </Column>
+            </Row>
             {movies.map((movie) => (
                 <a
                     key={movie.imdbID}
@@ -52,7 +55,7 @@ function ListItems({ movies }) {
                     onClick={() => toggleModal(movie.imdbID)}
                 >
                     <Row>
-                        <Column colType='3'>
+                        <Column colType="3">
                             <img
                                 src={movie.Poster}
                                 alt={movie.Title}
@@ -60,45 +63,55 @@ function ListItems({ movies }) {
                                 height="150"
                             />
                         </Column>
-                        <Column colType='9'>
+                        <Column colType="9">
                             <h5 className="mb-1">{movie.Title}</h5>
                             <p>Year: {movie.Year}</p>
                             <p>Type: {movie.Type}</p>
                         </Column>
                     </Row>
-
                 </a>
             ))}
-
-            <Modal show={showModal} onHide={handleClose} size="lg"
-                   aria-labelledby="contained-modal-title-vcenter"
-                   centered>
+            <Modal
+                show={showModal}
+                onHide={handleClose}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
                 <Modal.Header closeButton>
-                    <Modal.Title>
-                        {movie.Title}
-                    </Modal.Title>
+                    <Modal.Title>{movie.Title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Row>
-                        <Column colType='6'>
-                            <h6>Genre: {movie.Genre}</h6>
-                            <h6>Released: {movie.Released}</h6>
-                            <h6>Country: {movie.Country}</h6>
-                            <h6>Language: {movie.Language}</h6>
-                        </Column>
-                        <Column colType='6'>
-                            <h6>Director: {movie.Director}</h6>
-                            <h6>Writer: {movie.Writer}</h6>
-                            <h6>Duration: {movie.Runtime}</h6>
-                            <h6>Rating: {movie.imdbRating}</h6>
-                        </Column>
-                    </Row>
-                    <hr/>
-                    {movie.Plot}
-                    <hr/>
-                    <h6>Actors: {movie.Actors}</h6>
-                    <hr/>
-                    <h6>Awards: {movie.Awards}</h6>
+                    {isLoading ? (
+                        <div className="d-flex justify-content-center align-items-center">
+                            <Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        </div>
+                    ) : (
+                        <>
+                            <Row>
+                                <Column colType="6">
+                                    <h6>Genre: {movie.Genre}</h6>
+                                    <h6>Released: {movie.Released}</h6>
+                                    <h6>Country: {movie.Country}</h6>
+                                    <h6>Language: {movie.Language}</h6>
+                                </Column>
+                                <Column colType="6">
+                                    <h6>Director: {movie.Director}</h6>
+                                    <h6>Writer: {movie.Writer}</h6>
+                                    <h6>Duration: {movie.Runtime}</h6>
+                                    <h6>Rating: {movie.imdbRating}</h6>
+                                </Column>
+                            </Row>
+                            <hr />
+                            {movie.Plot}
+                            <hr />
+                            <h6>Actors: {movie.Actors}</h6>
+                            <hr />
+                            <h6>Awards: {movie.Awards}</h6>
+                        </>
+                    )}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
