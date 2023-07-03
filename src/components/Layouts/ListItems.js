@@ -23,7 +23,6 @@ function ListItems({ movies }) {
         fetchData();
     }, [modalTarget]);
 
-    console.log(movie)
 
     const toggleModal = (target) => {
         setShowModal(!showModal);

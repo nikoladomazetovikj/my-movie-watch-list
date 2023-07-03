@@ -7,6 +7,17 @@ function App() {
 
     const [movies, setMovies] = useState([]);
 
+    const [name, setName] = useState('');
+
+    function handleNameChange(name) {
+        setName(name);
+    }
+
+    function handleOnSubmit() {
+        setName('');
+    }
+
+    console.log(name)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -24,7 +35,7 @@ function App() {
     return (
         <>
             <Navbar/>
-            <Main>
+            <Main onNameChange={handleNameChange} onSubmit={handleOnSubmit} name={name}>
                 <MoviesList movies={movies}/>
             </Main>
         </>
