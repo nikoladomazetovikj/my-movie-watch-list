@@ -36,10 +36,10 @@ function ListItems({ movies }) {
         <>
            <Row>
                <Column colType='6'>
-                   <h3>Search Movies</h3>
+                   <h6>Results</h6>
                </Column>
                <Column colType='6'>
-                   <h3 className='text-end'>Found: {movies.length}</h3>
+                   <h6 className='text-end'>Found: {movies.length}</h6>
                </Column>
            </Row>
             {movies.map((movie) => (

@@ -3,7 +3,6 @@ function Search({ onNameChange, name }) {
         onNameChange(e.target.value);
     };
 
-
     return (
         <form className="d-flex" role="search" >
             <input

@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import {useEffect, useState} from "react";
 import MoviesList from "./components/Movies/MoviesList";
+import InitialScreen from "./components/Main/InitialScreen";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Navbar/>
             <Main onNameChange={handleNameChange}  name={name}>
                 {movies && <MoviesList movies={movies}/>}
+                {!movies && <InitialScreen/>}
             </Main>
         </>
     );
