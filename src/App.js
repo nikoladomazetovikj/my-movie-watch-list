@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import MoviesList from "./components/Movies/MoviesList";
 import InitialScreen from "./components/Main/InitialScreen";
 import Alert from "./components/Layouts/Alert";
+import MyMovieList from "./components/Movies/MyMovieList";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
             {showError && <Alert error={error}/>}
             <Main onNameChange={handleNameChange}  name={name}>
                 {movies && <MoviesList movies={movies}/>}
+                <MyMovieList/>
                 {!movies && <InitialScreen/>}
             </Main>
         </>
