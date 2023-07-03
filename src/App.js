@@ -17,11 +17,11 @@ function App() {
         setName('');
     }
 
-    console.log(name)
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://www.omdbapi.com/?s=interstellar&apikey=${process.env.REACT_APP_API_KEY}`);
+                const response = await fetch(`http://www.omdbapi.com/?s=${name}&apikey=${process.env.REACT_APP_API_KEY}`);
                 const data = await response.json();
                 setMovies(data.Search);
             } catch (error) {
@@ -30,13 +30,13 @@ function App() {
         };
 
         fetchData();
-    }, []);
+    }, [name]);
 
     return (
         <>
             <Navbar/>
             <Main onNameChange={handleNameChange} onSubmit={handleOnSubmit} name={name}>
-                <MoviesList movies={movies}/>
+                {movies && <MoviesList movies={movies}/>}
             </Main>
         </>
     );
