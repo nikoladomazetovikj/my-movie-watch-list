@@ -1,6 +1,6 @@
-function Row({children}) {
+function Row({children, style}) {
     return (
-        <div className='row'>
+        <div className={`row ${style}`}>
             {children}
         </div>
     );
