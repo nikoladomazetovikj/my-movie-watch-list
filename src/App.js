@@ -13,11 +13,6 @@ function App() {
         setName(name);
     }
 
-    function handleOnSubmit() {
-        setName('');
-    }
-
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -35,7 +30,7 @@ function App() {
     return (
         <>
             <Navbar/>
-            <Main onNameChange={handleNameChange} onSubmit={handleOnSubmit} name={name}>
+            <Main onNameChange={handleNameChange}  name={name}>
                 {movies && <MoviesList movies={movies}/>}
             </Main>
         </>
