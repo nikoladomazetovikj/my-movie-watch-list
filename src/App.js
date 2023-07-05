@@ -16,6 +16,13 @@ function App() {
 
     const [showError, setShowError] = useState(false);
 
+    const [myMovies, setMyMovies] = useState([]);
+
+    function handleOnAddToWatchList(object) {
+        setMyMovies([...myMovies, object]);
+    }
+
+
     function handleNameChange(name) {
         setName(name);
     }
@@ -39,13 +46,15 @@ function App() {
         setShowError(!!error);
     }, [error]);
 
+
+    console.log('my movies', myMovies);
     return (
         <>
             <Navbar/>
             {showError && <Alert error={error}/>}
             <Main onNameChange={handleNameChange}  name={name}>
-                {movies && <MoviesList movies={movies}/>}
-                <MyMovieList/>
+                {movies && <MoviesList movies={movies} onAdd={handleOnAddToWatchList}/>}
+                <MyMovieList myMovies={myMovies} />
                 {!movies && <InitialScreen/>}
             </Main>
         </>

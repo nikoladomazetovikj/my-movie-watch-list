@@ -2,6 +2,8 @@ import Row from "../Layouts/Row";
 import Column from "../Layouts/Column";
 
 function MyMovieList({myMovies}) {
+
+
     return (
         <>
             <h1>My List</h1>

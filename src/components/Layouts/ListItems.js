@@ -3,7 +3,7 @@ import { Button, Modal, Spinner } from "react-bootstrap";
 import Row from "./Row";
 import Column from "./Column";
 
-function ListItems({ movies }) {
+function ListItems({ movies, onAdd }) {
     const [showModal, setShowModal] = useState(false);
     const [modalTarget, setModalTarget] = useState("");
     const [movie, setMovie] = useState({});
@@ -34,6 +34,10 @@ function ListItems({ movies }) {
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
+
+    function onHandleAdd(object) {
+        onAdd(object);
+    }
 
     return (
         <>
@@ -117,7 +121,7 @@ function ListItems({ movies }) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={() => onHandleAdd(movie)}>
                         Add to Watch List
                     </Button>
                 </Modal.Footer>
