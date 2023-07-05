@@ -19,7 +19,9 @@ function App() {
     const [myMovies, setMyMovies] = useState([]);
 
     function handleOnAddToWatchList(object) {
-        setMyMovies([...myMovies, object]);
+        const objectExist = myMovies.some((movie) => movie.imdbID === object.imdbID);
+
+        if (!objectExist) setMyMovies([...myMovies, object]);
     }
 
 
