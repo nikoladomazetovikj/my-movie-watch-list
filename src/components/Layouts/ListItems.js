@@ -36,6 +36,7 @@ function ListItems({ movies, onAdd }) {
 
     function onHandleAdd(object) {
         onAdd(object);
+        handleClose();
     }
 
     return (

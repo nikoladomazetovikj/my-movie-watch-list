@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import MoviesList from "./components/Movies/MoviesList";
 import InitialScreen from "./components/Main/InitialScreen";
 import Alert from "./components/Layouts/Alert";
-import MyMovieList from "./components/Movies/MyMovieList";
 import InitialScreenMyList from "./components/Main/InitialScreenMyList";
 import FavouriteList from "./components/Movies/FavouriteList";
 
