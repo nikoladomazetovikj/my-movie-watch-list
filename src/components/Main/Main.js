@@ -9,11 +9,13 @@ function Main({children, onNameChange, name}) {
         <ContainerFluid style='m-5'>
             <Container>
                 <Row>
-                    <Search onNameChange={onNameChange}  name={name}/>
+                   <Column colType='12 col-md-10'>
+                       <Search onNameChange={onNameChange}  name={name}/>
+                   </Column>
                 </Row>
                <Row style='m-5'>
                    {children.map((child, index) => (
-                       <Column key={index} colType='6'>
+                       <Column key={index} colType='6 col-md-6'>
                            {child}
                        </Column>
                    ))}

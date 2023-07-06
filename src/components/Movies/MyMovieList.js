@@ -8,10 +8,10 @@ function MyMovieList({myMovies, onRemove}) {
             <Row>
                 <h6>My List</h6>
                 <hr/>
-                <Column colType="6">
+                <Column colType="6 col-md-6">
                     <h6>Results</h6>
                 </Column>
-                <Column colType="6">
+                <Column colType="6 col-md-6">
                     <h6 className="text-end">Found: {myMovies.length}</h6>
                 </Column>
             </Row>
@@ -24,7 +24,7 @@ function MyMovieList({myMovies, onRemove}) {
                     type="button"
                 >
                     <Row>
-                        <Column colType="3">
+                        <Column colType="3 col-md-6">
                             <img
                                 src={movie.Poster}
                                 alt={movie.Title}
@@ -32,14 +32,14 @@ function MyMovieList({myMovies, onRemove}) {
                                 height="150"
                             />
                         </Column>
-                        <Column colType="9">
+                        <Column colType="9 col-md-6">
                             <Row>
-                                <Column colType='9'>
+                                <Column colType='9 col-md-6 col-md-6 overflow-auto'>
                                     <h5 className="mb-1">{movie.Title}</h5>
                                     <p>Year: {movie.Year}</p>
                                     <p>Type: {movie.Type}</p>
                                 </Column>
-                                <Column colType='3'>
+                                <Column colType='3 col-md-6'>
                                     <Button variant='outline-secondary' type="button" onClick={() => onRemove(movie)}>X</Button>
                                 </Column>
                             </Row>

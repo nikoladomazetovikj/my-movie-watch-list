@@ -8,7 +8,7 @@ function InitialScreen() {
         <ContainerFluid>
             <Container>
                 <Row style='my-5'>
-                    <Column colType='6'>
+                    <Column colType='6 col-md-6'>
                         <h1>Please search for movie...</h1>
                     </Column>
                 </Row>

@@ -8,7 +8,7 @@ function InitialScreenMyList () {
         <ContainerFluid>
             <Container>
                 <Row style='my-5'>
-                    <Column colType='6'>
+                    <Column colType='6 col-md-6'>
                         <h1>Your List Is empty</h1>
                     </Column>
                 </Row>

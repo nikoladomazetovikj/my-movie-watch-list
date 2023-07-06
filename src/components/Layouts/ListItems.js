@@ -42,10 +42,10 @@ function ListItems({ movies, onAdd }) {
     return (
         <>
             <Row>
-                <Column colType="6">
+                <Column colType="6 col-md-6">
                     <h6>Results</h6>
                 </Column>
-                <Column colType="6">
+                <Column colType="6 col-md-6">
                     <h6 className="text-end">Found: {movies.length}</h6>
                 </Column>
             </Row>
@@ -59,7 +59,7 @@ function ListItems({ movies, onAdd }) {
                     onClick={() => toggleModal(movie.imdbID)}
                 >
                     <Row>
-                        <Column colType="3">
+                        <Column colType="3 col-md-6">
                             <img
                                 src={movie.Poster}
                                 alt={movie.Title}
@@ -67,7 +67,7 @@ function ListItems({ movies, onAdd }) {
                                 height="150"
                             />
                         </Column>
-                        <Column colType="9">
+                        <Column colType="9 col-md-6 overflow-auto">
                             <h5 className="mb-1">{movie.Title}</h5>
                             <p>Year: {movie.Year}</p>
                             <p>Type: {movie.Type}</p>
