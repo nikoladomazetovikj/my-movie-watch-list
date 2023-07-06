@@ -14,7 +14,7 @@ function ListItems({ movies, onAdd }) {
             setIsLoading(true);
             try {
                 const response = await fetch(
-                    `http://www.omdbapi.com/?i=${modalTarget}&apikey=${process.env.REACT_APP_API_KEY}`
+                    `https://www.omdbapi.com/?i=${modalTarget}&apikey=${process.env.REACT_APP_API_KEY}`
                 );
                 const data = await response.json();
                 setMovie(data);
