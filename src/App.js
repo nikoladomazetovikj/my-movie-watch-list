@@ -25,6 +25,12 @@ function App() {
         if (!objectExist) setMyMovies([...myMovies, object]);
     }
 
+    function handleRemoveFromWatchList(object) {
+        const updatedMovies = myMovies.filter(movie => movie.imdbID !== object.imdbID);
+
+        setMyMovies(updatedMovies);
+    }
+
 
     function handleNameChange(name) {
         setName(name);
@@ -55,7 +61,7 @@ function App() {
             {showError && <Alert error={error}/>}
             <Main onNameChange={handleNameChange}  name={name}>
                 {movies && <MoviesList movies={movies} onAdd={handleOnAddToWatchList}/>}
-                {!myMovies || myMovies.length === 0 ? <InitialScreenMyList /> : <FavouriteList myMovies={myMovies} />}
+                {!myMovies || myMovies.length === 0 ? <InitialScreenMyList /> : <FavouriteList myMovies={myMovies} onRemove={handleRemoveFromWatchList} />}
                 {!movies && <InitialScreen/>}
             </Main>
         </>

@@ -1,9 +1,8 @@
 import Row from "../Layouts/Row";
 import Column from "../Layouts/Column";
+import {Button} from "react-bootstrap";
 
-function MyMovieList({myMovies}) {
-
-
+function MyMovieList({myMovies, onRemove}) {
     return (
         <>
             <Row>
@@ -34,9 +33,16 @@ function MyMovieList({myMovies}) {
                             />
                         </Column>
                         <Column colType="9">
-                            <h5 className="mb-1">{movie.Title}</h5>
-                            <p>Year: {movie.Year}</p>
-                            <p>Type: {movie.Type}</p>
+                            <Row>
+                                <Column colType='9'>
+                                    <h5 className="mb-1">{movie.Title}</h5>
+                                    <p>Year: {movie.Year}</p>
+                                    <p>Type: {movie.Type}</p>
+                                </Column>
+                                <Column colType='3'>
+                                    <Button variant='outline-secondary' type="button" onClick={() => onRemove(movie)}>X</Button>
+                                </Column>
+                            </Row>
                         </Column>
                     </Row>
                 </a>

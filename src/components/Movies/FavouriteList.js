@@ -2,10 +2,10 @@ import List from "../Layouts/List";
 import ListItems from "../Layouts/ListItems";
 import MyMovieList from "./MyMovieList";
 
-function FavouriteList({myMovies}) {
+function FavouriteList({myMovies, onRemove}) {
     return(
         <List>
-            <MyMovieList myMovies={myMovies} />
+            <MyMovieList myMovies={myMovies} onRemove={onRemove}/>
         </List>
     );
 }
