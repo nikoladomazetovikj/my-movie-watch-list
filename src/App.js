@@ -41,7 +41,7 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://www.omdbapi.com/?s=${name}&apikey=${process.env.REACT_APP_API_KEY}`);
+                const response = await fetch(`https://www.omdbapi.com/?s=${name}&apikey=${process.env.REACT_APP_API_KEY}`);
                 const data = await response.json();
                 setError('');
                 setMovies(data.Search);
