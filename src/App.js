@@ -5,6 +5,8 @@ import MoviesList from "./components/Movies/MoviesList";
 import InitialScreen from "./components/Main/InitialScreen";
 import Alert from "./components/Layouts/Alert";
 import MyMovieList from "./components/Movies/MyMovieList";
+import InitialScreenMyList from "./components/Main/InitialScreenMyList";
+import FavouriteList from "./components/Movies/FavouriteList";
 
 function App() {
 
@@ -48,15 +50,13 @@ function App() {
         setShowError(!!error);
     }, [error]);
 
-
-    console.log('my movies', myMovies);
     return (
         <>
             <Navbar/>
             {showError && <Alert error={error}/>}
             <Main onNameChange={handleNameChange}  name={name}>
                 {movies && <MoviesList movies={movies} onAdd={handleOnAddToWatchList}/>}
-                <MyMovieList myMovies={myMovies} />
+                {!myMovies || myMovies.length === 0 ? <InitialScreenMyList /> : <FavouriteList myMovies={myMovies} />}
                 {!movies && <InitialScreen/>}
             </Main>
         </>

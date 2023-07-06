@@ -6,8 +6,9 @@ function MyMovieList({myMovies}) {
 
     return (
         <>
-            <h1>My List</h1>
             <Row>
+                <h6>My List</h6>
+                <hr/>
                 <Column colType="6">
                     <h6>Results</h6>
                 </Column>

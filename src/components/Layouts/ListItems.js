@@ -33,7 +33,6 @@ function ListItems({ movies, onAdd }) {
     };
 
     const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
 
     function onHandleAdd(object) {
         onAdd(object);
