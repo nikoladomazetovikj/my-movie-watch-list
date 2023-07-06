@@ -42,10 +42,10 @@ function ListItems({ movies, onAdd }) {
     return (
         <>
             <Row>
-                <Column colType="6 col-md-6">
+                <Column colType="6 col-md-6 col-6">
                     <h6>Results</h6>
                 </Column>
-                <Column colType="6 col-md-6">
+                <Column colType="6 col-md-6 col-6">
                     <h6 className="text-end">Found: {movies.length}</h6>
                 </Column>
             </Row>

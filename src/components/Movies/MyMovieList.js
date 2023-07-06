@@ -8,10 +8,10 @@ function MyMovieList({myMovies, onRemove}) {
             <Row>
                 <h6>My List</h6>
                 <hr/>
-                <Column colType="6 col-md-6">
+                <Column colType="6 col-md-6 col-6">
                     <h6>Results</h6>
                 </Column>
-                <Column colType="6 col-md-6">
+                <Column colType="6 col-md-6 col-6">
                     <h6 className="text-end">Found: {myMovies.length}</h6>
                 </Column>
             </Row>

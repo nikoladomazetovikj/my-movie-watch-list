@@ -6,6 +6,8 @@ import InitialScreen from "./components/Main/InitialScreen";
 import Alert from "./components/Layouts/Alert";
 import InitialScreenMyList from "./components/Main/InitialScreenMyList";
 import FavouriteList from "./components/Movies/FavouriteList";
+import ContainerFluid from "./components/Layouts/ContainerFluid";
+import {Container} from "react-bootstrap";
 
 function App() {
 
@@ -59,11 +61,11 @@ function App() {
         <>
             <Navbar/>
             {showError && <Alert error={error}/>}
-            <Main onNameChange={handleNameChange}  name={name}>
-                {movies && <MoviesList movies={movies} onAdd={handleOnAddToWatchList}/>}
-                {!myMovies || myMovies.length === 0 ? <InitialScreenMyList /> : <FavouriteList myMovies={myMovies} onRemove={handleRemoveFromWatchList} />}
-                {!movies && <InitialScreen/>}
-            </Main>
+                <Main onNameChange={handleNameChange}  name={name}>
+                    {movies && <MoviesList movies={movies} onAdd={handleOnAddToWatchList}/>}
+                    {!myMovies || myMovies.length === 0 ? <InitialScreenMyList /> : <FavouriteList myMovies={myMovies} onRemove={handleRemoveFromWatchList} />}
+                    {!movies && <InitialScreen/>}
+                </Main>
         </>
     );
 }

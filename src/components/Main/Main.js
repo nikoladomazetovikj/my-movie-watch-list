@@ -6,22 +6,22 @@ import Search from "./Search";
 
 function Main({children, onNameChange, name}) {
     return (
-        <ContainerFluid style='m-5'>
-            <Container>
-                <Row>
-                   <Column colType='12 col-md-10'>
+        <>
+            <Row>
+               <Container>
+                   <Column colType='6 col-md-10 col-8 mx-auto' style='mt-5'>
                        <Search onNameChange={onNameChange}  name={name}/>
                    </Column>
-                </Row>
-               <Row style='m-5'>
-                   {children.map((child, index) => (
-                       <Column key={index} colType='6 col-md-6'>
-                           {child}
-                       </Column>
-                   ))}
-               </Row>
-            </Container>
-        </ContainerFluid>
+               </Container>
+            </Row>
+            <Row style='m-5'>
+                {children.map((child, index) => (
+                    <Column key={index} colType='6 col-md-6 col-6'>
+                        {child}
+                    </Column>
+                ))}
+            </Row>
+        </>
     );
 }
 
