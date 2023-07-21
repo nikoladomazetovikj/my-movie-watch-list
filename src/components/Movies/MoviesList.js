@@ -1,10 +1,10 @@
 import List from "../Layouts/List";
 import ListItems from "../Layouts/ListItems";
 
-function MoviesList({movies,onAdd}) {
+function MoviesList() {
     return(
         <List>
-            <ListItems movies={movies} onAdd={onAdd}/>
+            <ListItems />
         </List>
     );
 }

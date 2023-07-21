@@ -4,13 +4,13 @@ import Column from "../Layouts/Column";
 import Row from "../Layouts/Row";
 import Search from "./Search";
 
-function Main({children, onNameChange, name}) {
+function Main({children}) {
     return (
         <>
             <Row>
                <Container>
                    <Column colType='6 col-md-10 col-8 mx-auto' style='mt-5'>
-                       <Search onNameChange={onNameChange}  name={name}/>
+                       <Search/>
                    </Column>
                </Container>
             </Row>

@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { Button, Modal, Spinner } from "react-bootstrap";
 import Row from "./Row";
 import Column from "./Column";
+import AppContext from "../../storage/app-context";
 
-function ListItems({ movies, onAdd }) {
+function ListItems() {
     const [showModal, setShowModal] = useState(false);
     const [modalTarget, setModalTarget] = useState("");
     const [movie, setMovie] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+
+    const {movies, onAdd} = useContext(AppContext);
 
     useEffect(() => {
         const fetchData = async () => {

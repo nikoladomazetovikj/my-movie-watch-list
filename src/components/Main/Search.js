@@ -1,6 +1,12 @@
-function Search({ onNameChange, name }) {
+import React, { useContext } from "react";
+import AppContext from "../../storage/app-context";
+
+
+function Search() {
+    const { handleNameChange, name } = useContext(AppContext);
+
     const handleInputChange = (e) => {
-        onNameChange(e.target.value);
+        handleNameChange(e.target.value);
     };
 
     return (
